@@ -29,6 +29,6 @@ exports.get = function (key) {
 
 
 exports.meta = function (key) {
-
+ 
     return store.meta(key, criteria);
 };

@@ -1,5 +1,6 @@
 var Confidence = require('confidence');
 var Config = require('./config');
+var Path = require('path');
 
 
 var criteria = {
@@ -21,10 +22,16 @@ var manifest = {
     },
     connections: [{
         port: Config.get('/port/web'),
-        labels: ['web']
+        labels: ['web'],
+        routes: {
+            files: {
+                relativeTo: Path.join(__dirname, 'server/web/dist/')
+            }
+        }
     }],
     plugins: {
         'vision': {},
+        'inert': {},
         'visionary': {
             engines: { jade: 'jade' },
             path: './server/web'

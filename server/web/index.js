@@ -1,20 +1,21 @@
 exports.register = function (server, options, next) {
 
-    server.route({
-        method: 'GET',
-        path: '/',
-        handler: function (request, reply) {
+  server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+      directory: {
+        path: '.',
+        redirectToSlash: true,
+        index: true
+      }
+    }
+  });
 
-            return reply.view('index');
-        }
-    });
-
-
-    next();
+  next();
 };
 
 
 exports.register.attributes = {
-    name: 'web',
-    dependencies: 'visionary'
+  name: 'web'
 };
