@@ -25,17 +25,13 @@ var manifest = {
         labels: ['web'],
         routes: {
             files: {
-                relativeTo: Path.join(__dirname, 'server/web/dist/')
+                relativeTo: Path.join(__dirname, 'server/web/')
             }
         }
     }],
     plugins: {
         'vision': {},
         'inert': {},
-        'visionary': {
-            engines: { jade: 'jade' },
-            path: './server/web'
-        },
         './server/api/index': [{ routes: { prefix: '/api' } }],
         './server/web/index': {}
     }
