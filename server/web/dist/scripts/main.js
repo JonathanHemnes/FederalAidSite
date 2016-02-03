@@ -44,6 +44,8 @@
             controller: function(){
                 let vm = this;
                 vm.children = [];
+                vm.totalFamilySize = null;
+                vm.income = null;
             }
         })
 })();
