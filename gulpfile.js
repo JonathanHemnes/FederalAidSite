@@ -17,5 +17,5 @@ gulp.task('clean:js', ()=> {
 });
 
 gulp.task('watch', ()=> {
-    gulp.watch('./lib/scripts/**/*.js', ['build:js']);
+    gulp.watch('./lib/scripts/**/*.js', ['build']);
 });
