@@ -1,3 +1,6 @@
 <ul>
-    <li ng-repeat="age in crtl.allowableAges"> {{age}}</li>
+    <span ng-repeat="age in ctrl.allowableAges">
+        <button ng-class="ctrl.isActiveAge(age)" ng-click="ctrl.toggle(age)">{{age}}</button>
+    </span>
 </ul>
+<h3>{{ctrl.selectedAges}}</h3>
