@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/JonathanHemnes/FederalAidSite",
   "dependencies": {
+    "angular": "^1.5.0",
     "angular-ui-bootstrap": "^1.1.2",
     "confidence": "^1.x.x",
     "glue": "^2.x.x",
