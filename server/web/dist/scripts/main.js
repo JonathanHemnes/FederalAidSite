@@ -38,6 +38,38 @@
     'use strict';
     angular
         .module('eligbl')
+        .component('familySize', {
+            bindings:{
+                familySize: '='
+            },
+            templateUrl: './dist/templates/family-size.html',
+            controllerAs: 'ctrl',
+            controller: function(){
+                let vm = this;
+                vm.familySize = vm.totalFamilySize
+            }
+        })
+})();
+(function(){
+    'use strict';
+    angular
+        .module('eligbl')
+        .component('incomeSelector', {
+            bindings:{
+                annualIncome: '='
+            },
+            templateUrl: './dist/templates/income-selector.html',
+            controllerAs: 'ctrl',
+            controller: function(){
+                let vm = this;
+                vm.annualIncome = vm.income;
+            }
+        })
+})();
+(function(){
+    'use strict';
+    angular
+        .module('eligbl')
         .component('person', {
             templateUrl: './dist/templates/person.html',
             controllerAs: 'ctrl',

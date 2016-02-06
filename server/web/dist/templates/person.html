@@ -1,11 +1,5 @@
 <age-selector children="ctrl.children"></age-selector>
 <br>
-<div class="input-group col-lg-3">
-    <span class="input-group-addon">Number Of Family Members:</span>
-    <input type="number" class="form-control" ng-model="ctrl.totalFamilySize">
-</div>
+<family-size familySize="ctrl.totalFamilySize"></family-size>
 <br>
-<div class="input-group col-lg-3">
-    <span class="input-group-addon">Total Yearly Household Income:</span>
-    <input type="tel" class="form-control" ng-model="ctrl.income">
-</div>
+<income-selector annualIncome="ctrl.income"></income-selector>
