@@ -1,5 +1,13 @@
-<age-selector children="ctrl.children"></age-selector>
-<br>
-<family-size familySize="ctrl.totalFamilySize"></family-size>
-<br>
-<income-selector annualIncome="ctrl.income"></income-selector>
+<div class="container-fluid col-lg-7">
+    <div>
+        <form>
+            <age-selector children="ctrl.children"></age-selector>
+            <br>
+            <family-size familySize="ctrl.totalFamilySize"></family-size>
+            <br>
+            <income-selector annualIncome="ctrl.income"></income-selector>
+            <br>
+            <button class="btn btn-default" ng-click="ctrl.submit()">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,8 +1,12 @@
+<div class="container-fluid">
 <div>
     <h4>Please select the ages of your children from the list below.</h4>
 </div>
 <ul>
+    <div class="btn-group col-lg-6">
     <span ng-repeat="age in ctrl.allowableAges">
-        <button ng-class="ctrl.isActiveAge(age)" ng-click="ctrl.toggle(age)">{{age}}</button>
+        <button type="button" class="btn btn-default" ng-class="ctrl.isActiveAge(age)" ng-click="ctrl.toggle(age)">{{age}}</button>
     </span>
+    </div>
 </ul>
+</div>
