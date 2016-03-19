@@ -1,11 +1,11 @@
 exports.register = function (server, options, next) {
 
     server.route({
-        method: 'GET',
-        path: '/',
+        method: 'POST',
+        path: '/getFilteredPrograms',
         handler: function (request, reply) {
-
-            reply({ message: 'Welcome to the plot device.' });
+            console.log(request.payload)
+            return reply({ message: 'Welcome to the plot device.' });
         }
     });
 

@@ -32,7 +32,7 @@ var manifest = {
     plugins: {
         'vision': {},
         'inert': {},
-        './server/api/index': [{ routes: { prefix: '/api' } }],
+        './server/api/endpoints/index': [{ routes: { prefix: '/api' } }],
         './server/web/index': {}
     }
 };

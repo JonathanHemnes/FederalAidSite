@@ -38,15 +38,13 @@
     'use strict';
     angular
         .module('eligbl')
-        .component('familySize', {
+        .component('familySizeSelector', {
             bindings:{
-                familySize: '='
+                berjibbers: '='
             },
             templateUrl: './dist/templates/family-size.html',
             controllerAs: 'ctrl',
             controller: function(){
-                let vm = this;
-                vm.familySize = vm.totalFamilySize
             }
         })
 })();
@@ -56,25 +54,24 @@
         .module('eligbl')
         .component('incomeSelector', {
             bindings:{
-                annualIncome: '='
+                income: '='
             },
             templateUrl: './dist/templates/income-selector.html',
             controllerAs: 'ctrl',
             controller: function(){
-                let vm = this;
-                vm.annualIncome = vm.income;
             }
         })
 })();
 (function(){
     'use strict';
-    function personController(){
+    function personController(submitter){
         let vm = this;
-        vm.children = [];
-        vm.totalFamilySize = null;
-        vm.income = null;
+        vm.person = {};
+        vm.person.children = [];
+        vm.person.totalFamilySize = null;
+        vm.person.income = null;
         vm.submit = function(){
-            $http.post()
+            submitter.submit(vm.person)
         }
     }
     angular
@@ -84,4 +81,49 @@
             controller: personController,
             controllerAs: 'ctrl'
         })
+})();
+(function () {
+    'use strict';
+    angular
+        .module('eligbl')
+        .service('filteredPrograms', [filteredProgramService]);
+    function filteredProgramService(){
+        function getFilteredPrograms(){
+            return [
+                {
+                    name: "Jonathan's Programs",
+                    description: "this is definetely a real program",
+                    website: "www.yomomma.com"
+                },{
+                    name: "Ely's Programs",
+                    description: "this is definetely a real program234234234",
+                    website: "www.yomomma2.com"
+                }
+            ]
+        }
+        function setFilteredPrograms(programs){
+            this.filteredPrograms = programs;
+        }
+        return {
+            getFilteredPrograms: getFilteredPrograms,
+            setFilteredPrograms: setFilteredPrograms
+        }
+    }
+})();
+(function () {
+    angular
+        .module('eligbl')
+        .service('submitter', ['$http', 'filteredPrograms', submitterService]);
+    function submitterService($http, filteredPrograms){
+        function submit(person){
+            $http.post('http://localhost:8080/api/getFilteredPrograms', person)
+            .then(result =>{
+                console.log(result);
+                filteredPrograms.setFilteredPrograms(result);
+            });
+        }
+        return {
+            submit: submit
+        }
+    }
 })();

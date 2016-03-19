@@ -1,11 +1,11 @@
 <div class="container-fluid col-lg-7">
     <div>
         <form>
-            <age-selector children="ctrl.children"></age-selector>
+            <age-selector children="ctrl.person.children"></age-selector>
             <br>
-            <family-size familySize="ctrl.totalFamilySize"></family-size>
+            <family-size-selector berjibbers="ctrl.person.totalFamilySize"></family-size-selector>
             <br>
-            <income-selector annualIncome="ctrl.income"></income-selector>
+            <income-selector income="ctrl.person.income"></income-selector>
             <br>
             <button class="btn btn-default" ng-click="ctrl.submit()">Submit</button>
         </form>
