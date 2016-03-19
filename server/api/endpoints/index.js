@@ -4,11 +4,13 @@ exports.register = function (server, options, next) {
         method: 'POST',
         path: '/getFilteredPrograms',
         handler: function (request, reply) {
-            console.log(request.payload)
-            return reply({ message: 'Welcome to the plot device.' });
+            var FederalAidPrograms = request.server.plugins['hapi-mongo-models'].Programs;
+            FederalAidPrograms.find({}, (err,result)=>{
+                console.log(result);
+                return reply({result});
+            });
         }
     });
-
 
     next();
 };

@@ -1,13 +1,24 @@
 <div class="container-fluid col-lg-7">
     <div>
         <form>
+            <div class="input-group col-lg-6">
+                <button ng-class="ctrl.getIsPregnantClass()" ng-click="ctrl.toggleIsPregnant()">Pregnant?</button>
+            </div>
+            <br>
             <age-selector children="ctrl.person.children"></age-selector>
             <br>
-            <family-size-selector berjibbers="ctrl.person.totalFamilySize"></family-size-selector>
+            <div class="input-group col-lg-6">
+                <span class="input-group-addon">Number Of Family Members:</span>
+                <input type="tel" class="form-control" ng-model="ctrl.person.familySize">
+            </div>
             <br>
-            <income-selector income="ctrl.person.income"></income-selector>
+            <div class="input-group col-lg-6">
+                <span class="input-group-addon">Total Yearly Household Income:</span>
+                <input type="tel" class="form-control" ng-model="ctrl.person.income">
+            </div>
             <br>
             <button class="btn btn-default" ng-click="ctrl.submit()">Submit</button>
         </form>
+        {{ctrl}}
     </div>
 </div>

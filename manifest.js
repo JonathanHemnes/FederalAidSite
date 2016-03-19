@@ -32,6 +32,14 @@ var manifest = {
     plugins: {
         'vision': {},
         'inert': {},
+        'hapi-mongo-models':{
+            'mongodb':{
+                'url': 'mongodb://localhost:27017/local'
+            },
+            'models':{
+                'Programs': './FederalAidSite/server/api/schemas/federal-aid-programs.schema.js'
+            }
+        },
         './server/api/endpoints/index': [{ routes: { prefix: '/api' } }],
         './server/web/index': {}
     }
