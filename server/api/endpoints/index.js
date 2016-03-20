@@ -11,15 +11,28 @@ exports.register = function (server, options, next) {
             const ageOfYoungestChild = getYoungestChild(person.children);
             const filter = {
                 maxFPL: {$gte: percentageOfFPL},
-               $or: generateChildFilter(ageOfYoungestChild)
+                $or: generateChildFilter(ageOfYoungestChild)
             };
-            FederalAidPrograms.find(filter, (err, result)=> {
-                console.log(result);
-                return reply({result});
+            FederalAidPrograms.find(filter, (err, programs) => {
+                const filteredPrograms = getProgramsThatMatchPregnancyRequirement(programs, person);
+                return reply({filteredPrograms});
             });
         }
     });
-    const generateChildFilter = function (ageOfYoungestChild) {
+    const getProgramsThatMatchPregnancyRequirement = (programs, person) => {
+        const filteredPrograms = [];
+        programs.map((program) => {
+            if (!program.isRequiredToBePregnant) {
+                filteredPrograms.push(program);
+            } else {
+                if (person.isPregnant) {
+                    filteredPrograms.push(program);
+                }
+            }
+        });
+        return filteredPrograms;
+    };
+    const generateChildFilter = (ageOfYoungestChild) => {
         let filter = [];
         filter.push({
             requiredChildAge: null
