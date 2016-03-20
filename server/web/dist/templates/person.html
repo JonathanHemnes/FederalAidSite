@@ -1,24 +1,23 @@
-<div class="container-fluid col-lg-7">
-    <div>
-        <form>
-            <div class="input-group col-lg-6">
-                <button ng-class="ctrl.getIsPregnantClass()" ng-click="ctrl.toggleIsPregnant()">Pregnant?</button>
-            </div>
-            <br>
-            <age-selector children="ctrl.person.children"></age-selector>
-            <br>
-            <div class="input-group col-lg-6">
-                <span class="input-group-addon">Number Of Family Members:</span>
-                <input type="tel" class="form-control" ng-model="ctrl.person.familySize">
-            </div>
-            <br>
-            <div class="input-group col-lg-6">
-                <span class="input-group-addon">Total Yearly Household Income:</span>
-                <input type="tel" class="form-control" ng-model="ctrl.person.income">
-            </div>
-            <br>
-            <button class="btn btn-default" ng-click="ctrl.submit()">Submit</button>
-        </form>
-        {{ctrl}}
-    </div>
+<div>
+    <form>
+        <br>
+        <div class="input-group col-lg-12">
+            <button ng-class="ctrl.getIsPregnantClass()" ng-click="ctrl.toggleIsPregnant()">I am currently pregnant</button>
+        </div>
+        <br>
+        <age-selector children="ctrl.person.children"></age-selector>
+        <br>
+        <div class="input-group col-lg-12">
+            <span class="input-group-addon">Number Of Family Members:</span>
+            <input type="tel" class="form-control" ng-model="ctrl.person.familySize" required>
+        </div>
+        <br>
+        <div class="input-group col-lg-12">
+            <span class="input-group-addon">Total Yearly Household Income:</span>
+            <input type="tel" class="form-control" ng-model="ctrl.person.income" required>
+        </div>
+        <br>
+        <button class="btn btn-lg btn-default" ng-click="ctrl.submit()">Submit</button>
+        <br>
+    </form>
 </div>

@@ -1,0 +1,8 @@
+<div ng-show="ctrl.getFilteredPrograms()">
+    <h2>The programs that you qualify for:</h2>
+    <div ng-repeat="program in ctrl.getFilteredPrograms()" >
+        <h2>{{program.name}}</h2>
+        <h3>{{program.description}}</h3>
+        <a href="{{program.url}}">{{program.url}}</a>
+    </div>
+</div>

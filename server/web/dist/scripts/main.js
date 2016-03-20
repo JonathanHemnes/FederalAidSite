@@ -36,46 +36,18 @@
 
 (function(){
     'use strict';
+    function filteredProgramsController(filteredPrograms){
+        let vm = this;
+        vm.getFilteredPrograms = () => {
+            return filteredPrograms.filteredPrograms;
+        }
+    }
     angular
         .module('eligbl')
-        .component('familySizeSelector', {
-            bindings:{
-                berjibbers: '='
-            },
-            templateUrl: './dist/templates/family-size.html',
-            controllerAs: 'ctrl',
-            controller: function(){
-            }
-        })
-})();
-(function(){
-    'use strict';
-    angular
-        .module('eligbl')
-        .component('incomeSelector', {
-            bindings:{
-                income: '='
-            },
-            templateUrl: './dist/templates/income-selector.html',
-            controllerAs: 'ctrl',
-            controller: function(){
-            }
-        })
-})();
-(function(){
-    'use strict';
-    angular
-        .module('eligbl')
-        .component('isPregnantSelector', {
-            bindings:{
-                dearGodWhy: '='
-            },
-            templateUrl: './dist/templates/is-pregnant-selector.html',
-            controllerAs: 'ctrl',
-            controller: function(){
-                var vm = this;
-
-            }
+        .component('filteredPrograms', {
+            templateUrl: './dist/templates/filtered-programs.html',
+            controller: filteredProgramsController,
+            controllerAs: 'ctrl'
         })
 })();
 (function(){
@@ -88,7 +60,7 @@
         vm.person.totalFamilySize = null;
         vm.person.income = null;
         vm.getIsPregnantClass = function(){
-            return vm.person.isPregnant ? 'btn btn-success' : 'btn btn-default';
+            return vm.person.isPregnant ? 'btn btn-lg btn-success' : 'btn btn-lg btn-default';
         };
         vm.toggleIsPregnant = function(){
             vm.person.isPregnant = !vm.person.isPregnant;
@@ -107,28 +79,33 @@
 })();
 (function () {
     'use strict';
+    function programViewportController() {
+        let vm = this;
+
+    }
+
+    angular
+        .module('eligbl')
+        .component('programViewport', {
+            bindings: {
+                currentProgram: '='
+            },
+            templateUrl: './dist/templates/program-viewport.html',
+            controller: programViewportController,
+            controllerAs: 'ctrl'
+        })
+})();
+(function () {
+    'use strict';
     angular
         .module('eligbl')
         .service('filteredPrograms', [filteredProgramService]);
     function filteredProgramService(){
-        function getFilteredPrograms(){
-            return [
-                {
-                    name: "Jonathan's Programs",
-                    description: "this is definetely a real program",
-                    website: "www.yomomma.com"
-                },{
-                    name: "Ely's Programs",
-                    description: "this is definetely a real program234234234",
-                    website: "www.yomomma2.com"
-                }
-            ]
-        }
+
         function setFilteredPrograms(programs){
             this.filteredPrograms = programs;
         }
         return {
-            getFilteredPrograms: getFilteredPrograms,
             setFilteredPrograms: setFilteredPrograms
         }
     }
@@ -141,8 +118,7 @@
         function submit(person){
             $http.post('http://localhost:8080/api/getFilteredPrograms', person)
             .then(result =>{
-                console.log(result);
-                filteredPrograms.setFilteredPrograms(result);
+                filteredPrograms.setFilteredPrograms(result.data.filteredPrograms);
             });
         }
         return {

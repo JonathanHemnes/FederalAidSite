@@ -33,11 +33,11 @@ exports.register = function (server, options, next) {
         return filteredPrograms;
     };
     const generateChildFilter = (ageOfYoungestChild) => {
-        let filter = [];
+        const filter = [];
         filter.push({
             requiredChildAge: null
         });
-        if (ageOfYoungestChild) {
+        if (ageOfYoungestChild !== null) {
             filter.push({
                 requiredChildAge: {$gte: ageOfYoungestChild}
             })
