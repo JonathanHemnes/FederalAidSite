@@ -1,3 +1,4 @@
+'use strict';
 exports.register = function (server, options, next) {
 
     server.route({
@@ -6,10 +7,11 @@ exports.register = function (server, options, next) {
         handler: function (request, reply) {
             const FederalAidPrograms = request.server.plugins['hapi-mongo-models'].Programs;
             const person = request.payload;
-            const percentageOfFPL = calculateFPL(person.annualIncome, person.numberOfFamilyMembers);
+            const percentageOfFPL = calculateFPL(person.income, person.familySize);
             const ageOfYoungestChild = getYoungestChild(person.children);
             const filter = {
-
+                maxFPL: {$gte: percentageOfFPL},
+               $or: generateChildFilter(ageOfYoungestChild)
             };
             FederalAidPrograms.find(filter, (err, result)=> {
                 console.log(result);
@@ -17,14 +19,28 @@ exports.register = function (server, options, next) {
             });
         }
     });
+    const generateChildFilter = function (ageOfYoungestChild) {
+        let filter = [];
+        filter.push({
+            requiredChildAge: null
+        });
+        if (ageOfYoungestChild) {
+            filter.push({
+                requiredChildAge: {$gte: ageOfYoungestChild}
+            })
+        }
+        return filter;
+    };
     const calculateFPL = (annualIncome, numberOfFamilyMembers) => {
         const individualIncome = 11880;
         const increment = 4140;
         let fpl = individualIncome + (increment * (numberOfFamilyMembers - 1));
-        return annualIncome / fpl;
+        return annualIncome / fpl * 100;
     };
     const getYoungestChild = (children) => {
-        //TODO: need to handle no children
+        if (children.length === 0) {
+            return null;
+        }
         let youngest = children[0];
         children.map((child) => {
             if (child < youngest) {
