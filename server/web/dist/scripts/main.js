@@ -118,7 +118,9 @@
         function submit(person){
             $http.post('/api/getFilteredPrograms', person)
             .then(result =>{
-                filteredPrograms.setFilteredPrograms(result.data.filteredPrograms);
+                console.log('found a result');
+                console.log(result);
+                filteredPrograms.setFilteredPrograms(result.data);
             });
         }
         return {
