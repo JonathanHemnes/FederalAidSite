@@ -1,8 +1,17 @@
-<div ng-show="ctrl.getFilteredPrograms()">
-    <h2>The programs that you qualify for:</h2>
-    <div ng-repeat="program in ctrl.getFilteredPrograms()" >
-        <h2>{{program.name}}</h2>
-        <h3>{{program.description}}</h3>
-        <a href="{{program.url}}">{{program.url}}</a>
-    </div>
+<div ng-show="ctrl.getFilteredPrograms().length > 1">
+    <h4>The programs that you qualify for:</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Link to Form</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="program in ctrl.getFilteredPrograms()">
+                <td>{{program.name}}</td>
+                <td><a ng-href="{{program.urlToForms}}">Forms</a></td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -34,12 +34,21 @@ var manifest = {
         'inert': {},
         'hapi-mongo-models':{
             'mongodb':{
-                'url': 'mongodb://'+ process.env.MODULUS_DB_USER + ':' + process.env.MODULUS_DB_PASS + '@jello.modulusmongo.net:27017/byj5oJah'
+                'url': 'mongodb://localhost:27017/local'
             },
             'models':{
                 'Programs': './server/api/schemas/federal-aid-programs.schema.js'
             }
         },
+        // 'good' : {
+        //     console: [{
+        //         module: 'good-squeeze',
+        //         name: 'Squeeze',
+        //         args: [{ log: '*', response: '*' }]
+        //     }, {
+        //         module: 'good-console'
+        //     }, 'stdout']
+        // },
         './server/api/endpoints/index': [{ routes: { prefix: '/api' } }],
         './server/web/index': {}
     }
@@ -59,3 +68,5 @@ exports.meta = function (key) {
 
     return store.meta(key, criteria);
 };
+
+// 'mongodb://'+ process.env.MODULUS_DB_USER + ':' + process.env.MODULUS_DB_PASS + '@jello.modulusmongo.net:27017/byj5oJah'
