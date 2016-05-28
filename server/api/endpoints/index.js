@@ -15,8 +15,8 @@ exports.register = function (server, options, next) {
             };
             FederalAidPrograms.find(filter, (err, programs) => {
                 const filteredPrograms = getProgramsThatMatchPregnancyRequirement(programs, person);
-                return reply({filteredPrograms});
-            });
+                return reply(filteredPrograms);
+            })
         }
     });
     const getProgramsThatMatchPregnancyRequirement = (programs, person) => {
