@@ -2,10 +2,6 @@
     <h3 class="text-center">Tell Us About Yourself</h3>
     <form>
         <br>
-        <div class="input-groups">
-            <button class="btn btn-default btn-block" ng-class="ctrl.getIsPregnantClass()" ng-click="ctrl.toggleIsPregnant()">I am  pregnant</button>
-        </div>
-        <br>
         <age-selector children="ctrl.person.children"></age-selector>
         <br>
         <div class="input-group">
@@ -15,7 +11,11 @@
         <br>
         <div class="input-group">
             <span class="input-group-addon">Total Yearly Household Income:</span>
-            <input type="tel" class="form-control" ng-model="ctrl.person.income" required>
+            <input type="tel" class="form-control" ng-model="ctrl.person.income" format="currency" required>
+        </div>
+        <br>
+        <div class="input-groups">
+            <button class="btn btn-default btn-block" ng-class="ctrl.getIsPregnantClass()" ng-click="ctrl.toggleIsPregnant()">I am  pregnant</button>
         </div>
         <br>
         <button class="btn btn-lg btn-default btn-block" ng-click="ctrl.submit()">Submit</button>
