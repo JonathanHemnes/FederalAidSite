@@ -1,14 +1,15 @@
-var Confidence = require('confidence');
-var Config = require('./config');
-var Path = require('path');
+'use strict';
+const Confidence = require('confidence');
+const Config = require('./config');
+const Path = require('path');
 
 
-var criteria = {
+const criteria = {
     env: process.env.NODE_ENV
 };
 
 
-var manifest = {
+const manifest = {
     $meta: 'This file defines the plot device.',
     server: {
         debug: {
@@ -34,7 +35,7 @@ var manifest = {
         'inert': {},
         'hapi-mongo-models':{
             'mongodb':{
-                'url': 'mongodb://'+ process.env.MODULUS_DB_USER + ':' + process.env.MODULUS_DB_PASS + '@jello.modulusmongo.net:27017/byj5oJah'
+                'url': 'mongodb://' + process.env.MODULUS_DB_USER + ':' + process.env.MODULUS_DB_PASS + '@jello.modulusmongo.net:27017/byj5oJah'
             },
             'models':{
                 'Programs': './server/api/schemas/federal-aid-programs.schema.js'
@@ -60,7 +61,7 @@ var manifest = {
 };
 
 
-var store = new Confidence.Store(manifest);
+const store = new Confidence.Store(manifest);
 
 
 exports.get = function (key) {

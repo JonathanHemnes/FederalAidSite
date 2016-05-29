@@ -1,8 +1,9 @@
-var Glue = require('glue');
-var Manifest = require('./manifest');
+'use strict';
+const Glue = require('glue');
+const Manifest = require('./manifest');
 
 
-var composeOptions = {
+const composeOptions = {
     relativeTo: __dirname
 };
 

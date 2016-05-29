@@ -1,0 +1,2 @@
+/lib/scripts/**/*.js
+/server/web/dist/**/*.js
