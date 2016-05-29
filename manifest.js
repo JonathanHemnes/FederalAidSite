@@ -40,15 +40,20 @@ var manifest = {
                 'Programs': './server/api/schemas/federal-aid-programs.schema.js'
             }
         },
-        // 'good' : {
-        //     console: [{
-        //         module: 'good-squeeze',
-        //         name: 'Squeeze',
-        //         args: [{ log: '*', response: '*' }]
-        //     }, {
-        //         module: 'good-console'
-        //     }, 'stdout']
-        // },
+        'good' : {
+            reporters: {
+                console: [{
+                    module: 'good-squeeze',
+                    name: 'Squeeze',
+                    args: [{
+                        log: '*',
+                        response: '*'
+                    }]
+                }, {
+                    module: 'good-console'
+                }, 'stdout']
+            }
+        },
         './server/api/endpoints/index': [{ routes: { prefix: '/api' } }],
         './server/web/index': {}
     }
