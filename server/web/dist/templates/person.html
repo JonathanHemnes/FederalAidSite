@@ -20,7 +20,7 @@
             <button class="btn btn-default btn-block" ng-class="ctrl.getIsPregnantClass()" ng-click="ctrl.toggleIsPregnant()">I am  pregnant</button>
         </div>
         <br>
-        <button class="btn btn-lg btn-default btn-block" ng-click="ctrl.submit()" ng-class="{'btn-success' : personForm.$valid}">Submit</button>
+        <button class="btn btn-lg btn-default btn-block" ng-click="ctrl.submit()" ng-disabled="!personForm.$valid" ng-class="{'btn-success' : personForm.$valid}">Submit</button>
         <br>
     </form>
 </div>

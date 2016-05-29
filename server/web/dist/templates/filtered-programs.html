@@ -8,10 +8,17 @@
         </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="program in ctrl.getFilteredPrograms()">
-                <td uib-tooltip="{{program.description}}" tooltip-append-to-body="true">{{program.name}}</td>
-                <td><a ng-href="{{program.urlToForms}}" target="_blank">{{program.name}} Forms</a></td>
-            </tr>
+        <tr ng-repeat="program in ctrl.getFilteredPrograms()">
+            <td uib-tooltip="{{program.description}}" tooltip-append-to-body="true">{{program.name}}</td>
+            <td><a ng-href="{{program.urlToForms}}" target="_blank">{{program.name}} Forms</a></td>
+        </tr>
         </tbody>
     </table>
+</div>
+<div ng-show="ctrl.getFilteredPrograms().length === 0">
+    <div class="container">
+        <div class="well">
+            <h2 class="text-center">We couldn't find any programs in our database that you qualify for.</h2>
+        </div>
+    </div>
 </div>
