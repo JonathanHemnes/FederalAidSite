@@ -9,7 +9,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="program in ctrl.getFilteredPrograms()">
-                <td>{{program.name}}</td>
+                <td uib-tooltip="{{program.description}}" tooltip-append-to-body="true">{{program.name}}</td>
                 <td><a ng-href="{{program.urlToForms}}" target="_blank">{{program.name}} Forms</a></td>
             </tr>
         </tbody>
