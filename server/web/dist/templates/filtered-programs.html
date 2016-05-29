@@ -1,6 +1,6 @@
 <div ng-show="ctrl.getFilteredPrograms().length > 1">
-    <h4 class="text-center">The programs that you qualify for</h4>
-    <table class="table">
+    <h4 class="text-center">You qualify for the following programs</h4>
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>Name</th>
@@ -10,7 +10,7 @@
         <tbody>
             <tr ng-repeat="program in ctrl.getFilteredPrograms()">
                 <td>{{program.name}}</td>
-                <td><a ng-href="{{program.urlToForms}}">Forms</a></td>
+                <td><a ng-href="{{program.urlToForms}}">{{program.name}} Forms</a></td>
             </tr>
         </tbody>
     </table>

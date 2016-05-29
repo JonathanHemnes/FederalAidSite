@@ -3,7 +3,7 @@
         <h4>Please select the ages of your children from the list below.</h4>
     </div>
     <ul>
-        <div class="btn-group">
+        <div>
             <button ng-repeat="age in ctrl.allowableAges" type="button" class="btn btn-default"
                     ng-class="ctrl.isActiveAge(age)" ng-click="ctrl.toggle(age)">{{age}}
             </button>
